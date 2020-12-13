@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Opacity-sliding-smooth</title>
+</head>
+<body>
+    <!-- O OBJETO (OU OBEJETIVO) DESTE SITE É APENAS JQUERY E NADA MAIS -->
+
+    <header>
+        <nav>
+            <ul>
+                <a href="#home"><li>Início</li></a>
+                <a href="#about"><li>Sobre</li></a>
+                <a href="#product"><li>Produto</li></a>
+                <a href="#contact"><li>Contato</li></a>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="home"></div>
+        <section class="home">
+            <div class="container">
+                <div class="info">
+                    <div class="img">
+                        <img src="assets/img/electric-guitar-4345340_640.jpg" alt="">
+                    </div>
+                    <div class="text">
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem fuga quod numquam assumenda cupiditate aliquid ipsum ullam dolorem sequi odio earum deleniti similique, debitis veritatis sunt esse natus tempore cum.</p>
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+    <div id="about"></div>
+        <section class="about">
+        <div class="container">
+            <div class="info">
+                <div class="text">
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem fuga quod numquam assumenda cupiditate aliquid ipsum ullam dolorem sequi odio earum deleniti similique, debitis veritatis sunt esse natus tempore cum.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem fuga quod numquam assumenda cupiditate aliquid ipsum ullam dolorem sequi odio earum deleniti similique, debitis veritatis sunt esse natus tempore cum.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem fuga quod numquam assumenda cupiditate aliquid ipsum ullam dolorem sequi odio earum deleniti similique, debitis veritatis sunt esse natus tempore cum.</p>
+                </div>
+                <div class="img" id="#img">
+                    <img src="assets/img/amsterdam2.jpg" alt="">
+                </div>
+            </div> 
+        </div>
+        </section>
+
+    <h1 id="product">Produtos</h1>
+        <section class="product">
+            <div class="container">
+                <div class="product--info">
+                    <div class="product--item">
+                        <img src="assets/img/amsterdam2.jpg" alt="">
+                    </div>
+                    <div class="product--item">
+                        <img src="assets/img/electric-guitar-4345340_640.jpg" alt="">
+
+                    </div>
+                    <div class="product--item">
+                        <img src="assets/img/ancient-5302626_640.jpg" alt="">
+
+                    </div>
+                    <div class="product--item">
+                        <img src="assets/img/north-america-1803504_640.jpg" alt="">
+                    </div>
+                    <div class="product--item">
+                        <img src="assets/img/electric-guitar-4345340_640.jpg " alt="">
+                    </div>
+                    <div class="product--item">
+                        <img src="assets/img/spider-5320486_640.jpg" alt="">
+
+                    </div>
+                    <div class="product--item">
+                        <img src="assets/img/north-america-1803504_640.jpg " alt="">
+
+                    </div>
+                    <div class="product--item">
+                        <img src="assets/img/amsterdam2.jpg " alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <h1 id="contact"> Fale conosco</h1>
+    
+        <section class="contact">
+            <div class="container">
+                <div class="send">
+                    <form action="">
+                        <input type="email" placeholder="Seu e-mail">
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    
+    <footer>
+        <p>Feito por João Maia</p>
+    </footer>
+    
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(()=>{
+            $('nav a').on('click',function(e){
+                e.preventDefault();
+                let innerHeight = $('header').innerHeight();
+                // console.log(innerHeight);
+
+                let hash = $(this).attr('href');
+                let item = $(hash).offset().top;
+
+                $('html, body').animate({
+                   scrollTop : item - innerHeight
+                },800);
+            });
+
+            $(window).on('scroll', function(){
+                let scroll = $(this).scrollTop();
+
+                let item = $('section');
+
+                item.each(function(){
+                    let offTop = $(this).offset().top;
+                    if (scroll > offTop - 300) {
+                        $(this).animate({
+                            opacity:'1'
+                        },800);                       
+                    }
+                });
+            });
+        
+        });
+    </script>
+</body>
+</html>
